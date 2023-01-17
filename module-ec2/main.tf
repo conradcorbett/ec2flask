@@ -52,19 +52,19 @@ resource "aws_instance" "instance" {
 
   connection {
     type        = "ssh"
-    user        = "ubuntu"
-    private_key = file("~/awskey.pem")
+    user        = "ec2-user"
+    private_key = file("~/key/awskey.pem")
     host        = self.public_ip
   }
 
   provisioner "remote-exec" {
     inline = [
-      "sudo wget -O postgres.sh https://raw.githubusercontent.com/conradcorbett/ec2postgres/master/module-ec2/configs/postgres.sh",
-      "sudo chmod +x /home/ubuntu/postgres.sh",
-      "sudo ./postgres.sh",
-      "sudo wget -O hello.sql https://raw.githubusercontent.com/conradcorbett/ec2postgres/master/module-ec2/configs/hello.sql",
-      "sudo chmod +x /home/ubuntu/hello.sql",
-      "/postgres/bin/psql -U postgres -f /home/ubuntu/hello.sql"
+      "sudo wget -O flask.sh https://raw.githubusercontent.com/conradcorbett/ec2flask/master/module-ec2/configs/flask/flask.sh",
+      #"sudo chmod +x /home/ubuntu/postgres.sh",
+      #"sudo ./postgres.sh",
+      #"sudo wget -O hello.sql https://raw.githubusercontent.com/conradcorbett/ec2postgres/master/module-ec2/configs/hello.sql",
+      #"sudo chmod +x /home/ubuntu/hello.sql",
+      #"/postgres/bin/psql -U postgres -f /home/ubuntu/hello.sql"
     ]
   }
 
