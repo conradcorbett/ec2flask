@@ -1,35 +1,51 @@
 from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
+from flask_sqlalchemy import SQLAlchemy
 import yaml
+import os
+import psycopg2
 
 app = Flask(__name__)
 
-# Configure db
-db = yaml.safe_load(open('db.yaml'))
-app.config['MYSQL_HOST'] = db['mysql_host']
-app.config['MYSQL_USER'] = db['mysql_user']
-app.config['MYSQL_PASSWORD'] = db['mysql_password']
-app.config['MYSQL_DB'] = db['mysql_db']
+# Configure mysqldb
+dbconfig = yaml.safe_load(open('db.yaml'))
+#app.config['MYSQL_HOST'] = dbconfig['mysql_host']
+#app.config['MYSQL_USER'] = dbconfig['mysql_user']
+#app.config['MYSQL_PASSWORD'] = dbconfig['mysql_password']
+#app.config['MYSQL_DB'] = dbconfig['mysql_db']
 
-mysql = MySQL(app)
+# Configure postgressql
+def get_db_connection():
+    conn = psycopg2.connect(host=dbconfig['mysql_host'],
+                            database=dbconfig['mysql_db'],
+                            user=dbconfig['mysql_user'],
+                            password=dbconfig['mysql_db'])
+    return conn
+
+#mysql = MySQL(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
+        conn = get_db_connection()
         # Fetch form data
         userDetails = request.form
         name = userDetails['name']
         email = userDetails['email']
-        cur = mysql.connection.cursor()
+        cur = conn.cursor()
+#        cur = mysql.connection.cursor()
         cur.execute("INSERT INTO users(name, email) VALUES(%s, %s)",(name, email))
-        mysql.connection.commit()
+#        mysql.connection.commit()
         cur.close()
+        conn.close()
         return redirect('/users')
     return render_template('index.html')
 
 @app.route('/users')
 def users():
-    cur = mysql.connection.cursor()
+    conn = get_db_connection() 
+    cur = conn.cursor()
+#    cur = mysql.connection.cursor()
     resultValue = cur.execute("SELECT * FROM users")
     if resultValue > 0:
         userDetails = cur.fetchall()
