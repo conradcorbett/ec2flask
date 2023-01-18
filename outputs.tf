@@ -1,7 +1,7 @@
 output "output" {
   value = <<README
 
-flaskappvm: ssh -i ~/awskey.pem ubuntu@${module.ec2vm.public_ip}
+flaskappvm: ssh -i ~/keys/awskey.pem ec2-user@${module.ec2vm.public_ip}
 
 README
 }

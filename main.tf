@@ -14,5 +14,5 @@ module "ec2vm" {
   vpc_id            = data.aws_vpc.vpc-seesquared.id
   name              = "${var.app}-vm"
   tags              = { Owner = "conrad.corbett@hashicorp.com", Environment = "test", Name = "${var.app}-vm" }
-  public_key        = aws_key_pair.aws_key.key_name
+  public_key        = data.aws_key_pair.aws_key.key_name
 }
