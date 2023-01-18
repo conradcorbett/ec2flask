@@ -1,7 +1,7 @@
 create role psqluser with login;
 CREATE ROLE vault WITH LOGIN SUPERUSER PASSWORD '123456';
 
-create database my_db_1 with owner psqluser;
+create database my_db_1 with owner vault1;
 
 \c my_db_1 psqluser;
 
