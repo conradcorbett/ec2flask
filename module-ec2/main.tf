@@ -70,6 +70,7 @@ resource "aws_instance" "instance" {
       "sudo ./flask.sh",
       "sudo chmod 777 db.yaml",
       "sudo echo mysql_password: ${var.db_pwd} >> /home/ec2-user/db.yaml",
+      "sudo nohup python3 app.py > log.txt 2>&1 &"
       #"sudo chmod +x /home/ubuntu/postgres.sh",
       #"sudo ./postgres.sh",
       #"sudo wget -O hello.sql https://raw.githubusercontent.com/conradcorbett/ec2postgres/master/module-ec2/configs/hello.sql",
