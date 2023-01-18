@@ -15,4 +15,5 @@ module "ec2vm" {
   name              = "${var.app}-vm"
   tags              = { Owner = "conrad.corbett@hashicorp.com", Environment = "test", Name = "${var.app}-vm" }
   public_key        = data.aws_key_pair.aws_key.key_name
+  db_pwd            = var.db_password
 }

@@ -67,7 +67,7 @@ resource "aws_instance" "instance" {
       "sudo wget -O templates/index.html https://raw.githubusercontent.com/conradcorbett/hcpdemo/master/flaskapp/templates/index.html",
       "sudo wget -O templates/users.html https://raw.githubusercontent.com/conradcorbett/hcpdemo/master/flaskapp/templates/users.html",
       "sudo ./flask.sh",
-      "echo mysql_password: ${var.db_password} >> /home/ec2-user/db.yaml",
+      "echo mysql_password: ${var.db_pwd} >> /home/ec2-user/db.yaml",
       #"sudo chmod +x /home/ubuntu/postgres.sh",
       #"sudo ./postgres.sh",
       #"sudo wget -O hello.sql https://raw.githubusercontent.com/conradcorbett/ec2postgres/master/module-ec2/configs/hello.sql",
