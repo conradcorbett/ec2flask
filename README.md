@@ -46,7 +46,3 @@ curl \
 
 Get data from kv, cli:
 vault kv get flaskweb1/flaskweb1
-
-DB_KEYS=$(curl     --header "X-Vault-Token:s.AZAu6NHUo9AlL5gCro3vScUU"     http://52.89.205.142:8200/v1/flaskweb1/data/flaskweb1)
-USERNAME=$(echo $DB_KEYS | jq -r '.data.data.username')
-PASSWORD=$(echo $DB_KEYS | jq -r '.data.data.password')
