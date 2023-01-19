@@ -54,7 +54,7 @@ def users():
     dbUser = cur.fetchall()
 #    if resultValue:
 #        userDetails = cur.fetchall()
-    return render_template('users.html', userDetails=userDetails)
+    return render_template('users.html', userDetails=userDetails, dbUser=dbUser)
 #    return render_template('users.html')
 
 if __name__ == '__main__':
