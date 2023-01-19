@@ -25,6 +25,6 @@ auto_auth {
 }
 
 template {
-  source = "/home/ec2-user/test.tpl"
+  source = "/home/ec2-user/source.tpl"
   destination = "/home/ec2-user/db.yaml"
 }

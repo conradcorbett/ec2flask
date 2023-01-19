@@ -1,8 +1,10 @@
+<body> connected to database as {{ dbUser[0] }} </body>
+
 <table border = 1>
-    {% for user in userDetails %}
-    <tr>
-      <td> {{user[0]}} </td>
-      <td> {{user[1]}} </td>
-    </tr>
-    {% endfor %}
-  </table>
+  {% for user in userDetails %}
+  <tr>
+    <td> {{user[0]}} </td>
+    <td> {{user[1]}} </td>
+  </tr>
+  {% endfor %}
+</table>

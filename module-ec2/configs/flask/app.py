@@ -48,6 +48,10 @@ def users():
 #    cur = mysql.connection.cursor()
     cur.execute('SELECT * FROM users;')
     userDetails = cur.fetchall()
+    cur.close()
+    cur = conn.cursor()
+    cur.execute('SELECT current_user;')
+    dbUser = cur.fetchall()
 #    if resultValue:
 #        userDetails = cur.fetchall()
     return render_template('users.html', userDetails=userDetails)

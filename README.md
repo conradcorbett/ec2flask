@@ -46,3 +46,6 @@ curl \
 
 Get data from kv, cli:
 vault kv get flaskweb1/flaskweb1
+
+Start vault agent:
+vault agent -config=/home/ec2-user/config.hcl
