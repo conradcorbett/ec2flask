@@ -51,3 +51,4 @@ Start vault agent:
 vault agent -config=/home/ec2-user/config.hcl
 If Vault server IP changes, then you will need to update the IP in config.hcl
 If DB server IP changes, then you will need to update the IP in db.yaml and source.tpl
+Need to automate
