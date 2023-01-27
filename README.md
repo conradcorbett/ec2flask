@@ -41,8 +41,8 @@ vault write auth/approle/login \
 
 Get data from kv, curl:
 curl \
-    --header "X-Vault-Token:s.VDpARZGxeG2AHBJkkxdI0mUR" \
-    http://52.89.205.142:8200/v1/flaskweb1/data/flaskweb1
+    --header "X-Vault-Token:s.AZAu6NHUo9AlL5gCro3vScUU" \
+    http://34.219.99.196:8200/v1/flaskweb1/data/flaskweb1
 
 Get data from kv, cli:
 vault kv get flaskweb1/flaskweb1
